@@ -17,6 +17,7 @@ const SignUp = () => {
     const submitHandler = (e)=>{
         e.preventDefault();
         setCheckSubmit(true)
+        setRole("customer")
         const data = {firstName:firstName,lastName:lastName,email:email,password:password,role:role};
         // console.log(data);
         BuyerLogin(data)
