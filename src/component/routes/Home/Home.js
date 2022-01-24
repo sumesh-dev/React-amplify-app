@@ -53,7 +53,7 @@ const Home = () => {
 
 
     return (
-        products.length<1?<><h1>loading the product</h1></>:<>
+        products.length<1?<><h1 style={{textAlign:"center"}}>loading the product</h1></>:<>
         <div className="container">
             <div className="row" style={{justifyContent:"center"}}>
                 {

@@ -17,10 +17,11 @@ const Product = () => {
     const [email,setEmail] = useState("")
     const [rating,setRating] = useState()
     const [comment,setComment] = useState("")
-    const [responseCheck, setResponseCheck] = useState(false)
+    // const [responseCheck, setResponseCheck] = useState(false)
     const { id } = useParams()
     const navigate = useNavigate()
     const { isSignedIn } = useContext(IsSignedIn)
+    const [commentFound, setCommentFound] = useState(false) 
 
     const AddToCartHandler = (productId)=>{
         AddToCart(productId)
@@ -56,7 +57,7 @@ const Product = () => {
             getSingleProductInfo(id)
             .then((response) => {
                 console.log(response.data)
-                setProduct(response.data)
+                setProduct(response.data,)
             })
             console.log(response.data)
         })
@@ -72,18 +73,33 @@ const Product = () => {
             .then((response) => {
                 console.log(response.data)
                 setProduct(response.data)
+                console.log(product)
                 // console.log(product)
             })
             console.log(response.data)
         })
     }
 
+    useEffect(()=>{
+        if(isSignedIn&&product.reviews){
+            let review = product.reviews.find((review)=>review.email == user.email)
+            console.log(review)
+            if(review!=undefined){
+                setCommentFound(true)
+                console.log(commentFound)
+            }
+            else{
+                setCommentFound(false)
+                console.log(commentFound)
+            }
+        }
+    },[product])
+
     useEffect(() => {
         getSingleProductInfo(id)
             .then((response) => {
                 console.log(response.data)
                 setProduct(response.data)
-                setResponseCheck(true)
                 // console.log(product)
                 // console.log(product.reviews.find((review)=>review.email === user.email))
             })
@@ -91,7 +107,7 @@ const Product = () => {
                 console.log(err)
                 navigate('/servererror')
             })
-    }, [])
+    }, [isSignedIn])
 
     return (
         <div className="container" style={{ marginTop: "5rem" }}>
@@ -118,7 +134,7 @@ const Product = () => {
                 </div>
                 <div className="col-lg-6">
                     <h1 className="display-4">Leave a Review</h1>
-                    {responseCheck&&(product.reviews.length<1||product.reviews.find((review)=>review.email == user.email).length<1)&&
+                    {!commentFound&&
                     <Form onSubmit={commentHandler}>
                         <Rating required className ="mt-3" rating={0} interactive onRatingChanged={(r) => setRating(r)}/>
                         <Form.Control className ="mt-3" as="textarea" rows={2} placeholder="enter comment here..." value={comment} onChange={(e)=>{setComment(e.target.value)}}/>

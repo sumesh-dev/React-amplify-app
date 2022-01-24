@@ -103,6 +103,7 @@ const AddNewProduct = (props) => {
                     <Form.Control required type="file" onChange={fileHandler} />
                     {isFilePicked && <div>
                         <p>Filename: {selectedFile.name}</p>
+                        {()=>setUrl(null)}
                     </div>
                     }
                     {url && <div>

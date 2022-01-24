@@ -52,7 +52,7 @@ const ShowSellerProduct = () => {
                             <div className='col-lg-4 col-md-6 col-sm-12' style={{maxHeight:"500px", minHeight:"500px"}} key={product._id}>
                                 {/* style={{border:"1px solid black", padding: "15px", height: "220px",margin: "5px auto"}}> */}
                                 <Card style={{ width: '18rem', minHeight: "500px", maxHeight:"500px", textAlign:"center" }} className="m-3">
-                                    <Card.Img style={{overflow:"hidden",border:"1px solid black",maxHeight:"250px",minHeight:"200px"}} variant="top" src={product.img} />
+                                    <Card.Img style={{overflow:"hidden",border:"1px solid black",maxHeight:"200px",minHeight:"200px"}} variant="top" src={product.img} />
                                     <Card.Body>
                                         <Card.Title>{product.name}</Card.Title>
                                         <Card.Text>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Col, Button, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {BuyerLogin} from '../../../service/buyerService'
+import {BuyerLogin, BuyerSignUp} from '../../../service/buyerService'
 
 const SignUp = () => {
 
@@ -20,7 +20,7 @@ const SignUp = () => {
         setRole("customer")
         const data = {firstName:firstName,lastName:lastName,email:email,password:password,role:role};
         // console.log(data);
-        BuyerLogin(data)
+        BuyerSignUp(data)
         .then((response)=>{
             if(response.status===200){
                 // console.log(response)
@@ -31,7 +31,7 @@ const SignUp = () => {
                     navigate('/login')    
                 }
                 else{
-                    toast.success("user sucessfully created please Login")
+                    toast.success("Account created sucessfully please Login")
                 // reactDom.render(<AlertMsg msg=" user sucessfully created please Login" show="true"/>, document.getElementById('error'))
                 navigate('/login')
                 }   
