@@ -96,7 +96,7 @@ const AddNewProduct = (props) => {
             <Form onSubmit={submitHandler}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <Form.Control required type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>upload single Jpeg/png file</Form.Label>
@@ -116,12 +116,12 @@ const AddNewProduct = (props) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>price</Form.Label>
-                    <Form.Control type="number" placeholder="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                    <Form.Control required type="number" placeholder="price" value={price} onChange={(e) => setPrice(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Desription</Form.Label>
-                    <Form.Control as="textarea" cols={30} rows={5} value={desc} onChange={(e) => setDesc(e.target.value)} />
+                    <Form.Control required as="textarea" cols={30} rows={5} value={desc} onChange={(e) => setDesc(e.target.value)} />
                 </Form.Group>
                 {updateProduct ?
                     <Button className="d-grid gap-2 col-6 mx-auto" variant="primary" type="submit">
