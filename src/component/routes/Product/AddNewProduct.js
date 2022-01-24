@@ -100,7 +100,7 @@ const AddNewProduct = (props) => {
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>upload single Jpeg/png file</Form.Label>
-                    <Form.Control required type="file" onChange={fileHandler} />
+                    <Form.Control required={url==null} type="file" onChange={fileHandler} />
                     {isFilePicked && <div>
                         <p>Filename: {selectedFile.name}</p>
                         {()=>setUrl(null)}
