@@ -14,6 +14,7 @@ const Logout = () => {
             setIsSignedIn(false)
             setUser([]);
             Cookies.remove('JwtToken');
+            Cookies.remove('SJwtToken');
             // toast.success("Logout successfully")
             return navigate('/');
     }

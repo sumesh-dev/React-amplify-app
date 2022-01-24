@@ -28,7 +28,7 @@ const SellerLogin = () => {
                 Cookies.set('SJwtToken',response.data.JwtToken,{expires:5*60*60*1000})
                 AuthenticatedSellerService()
                 .then((response)=>{
-                    toast.success("login successfully")
+                    // toast.success("login successfully")
                     console.log(response)
                     setUser(response.data);
                     setIsSignedIn(true);                    
